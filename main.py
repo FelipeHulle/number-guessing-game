@@ -1,57 +1,62 @@
 import random
-if __name__ == '__main__':
 
 
+class Difficulty:
+    def choosing_difficulty(self):
+        choose = ''
 
-    class Difficulty:
-
-        def choosing_difficulty(self):
-            choose = ''
-            while choose not in ('easy','medium','hard','impossible'):
-                choose = input('Choose your difficulty:\nEasy - 8 chances\nMedium - 6 chances\nHard - 4 chances\nImpossible - 3 chances\n').lower()
-            
-            chances = {
-                'easy' : 8,
-                'medium' : 6,
-                'hard' : 4,
-                'impossible' : 3
-            }
-            return print(chances[choose])
+        chances = {
+            1 : 8,
+            2 : 6,
+            3 : 4,
+            4 : 3
+        }
+        while choose not in chances:
         
-    class UserNumber:
-
-        def picking_number(self):
-            user_number = int(input('Choose a number: '))
-            return user_number
-
-
-    class Game:
-
-        def random_number(self):
-            number = random.randint(1,100)
-            return number
+            try:
+                choose = input('Choose your difficulty (Write the name):\n1. Easy (8 chances)\n2. Medium (6 chances)\n3. Hard (4 chances)\n4. Impossible (3 chances)\n\n')
+            
+            except:
+                print('Choose a valid number')
         
-        def main(self):
-            print('Welcome to number guessing game. Good Luck!')
-            magic_number = self.random_number()
+        return chances[choose]
+    
+class UserNumber:
+    def picking_number(self):
+        user_number = int(input('\nChoose a number: '))
+        return user_number
+    
+class Game:
 
-            difficulty = Difficulty()
-            user_difficulty = difficulty.choosing_difficulty()
+    def random_number(self):
+        number = random.randint(1,100)
+        return number
+    
+    def main(self):
+        print('\nWelcome to the Number Guessing Game. I\'m thinking of a number between 1 and 100.\nTry guess the number! Good Luck!\n')
 
-            chances = 1
-            user_number = UserNumber()
+        magic_number = self.random_number()
+        difficulty = Difficulty()
+        user_difficulty = difficulty.choosing_difficulty()
+        chances = 1
+        user_number = UserNumber()
+
+        while chances <= user_difficulty:
+            number_picked = user_number.picking_number()
+
+            if number_picked > magic_number:
+                chances += 1
+                print(f'The number is greater than Magic Number\n')
+                continue
+            elif number_picked < magic_number:
+                chances += 1
+                print(f'The number is less than Magic Number\n')
+                continue
+            elif number_picked == magic_number:
+                return print('\n********YOU WONNNNNN!!!!!!********\nTHE NUMBER IS CORRECT')
             
-            while chances <= user_difficulty:
-                number_picked = user_number.picking_number()
-                if number_picked > magic_number:
-                    print(f'The number {number_picked} is higher than Magic Number')
-                    continue
-                elif number_picked < magic_number:
-                    print(f'The number {number_picked} is higher than Magic Number')
-                    continue
-
-                
-
-    a = Difficulty()
-    a.choosing_difficulty()
+        return print('You lose, try again :(')
             
+
+game_instance = Game()
+game_instance.main()
