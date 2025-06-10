@@ -48,7 +48,6 @@ class Game:
         else:
             even_or_odd = 'Odd'
         return number, even_or_odd
-    
 
     
     def playing(self):
@@ -87,11 +86,13 @@ class Game:
             elif number_picked == magic_number:
                 final_time = time.time()
 
+                total_time = final_time - initial_time
+
                 return print(
                             f'\n********YOU WONNNNNN!!!!!!********\n' 
                             f'THE NUMBER IS CORRECT\n'
                             f'You took only {chances} attempts\n' 
-                            f'You spend {final_time - initial_time: .2f} seconds to guess the number'
+                            f'You spend {total_time: .2f} seconds to guess the number'
                         )
         
         final_time = time.time()
