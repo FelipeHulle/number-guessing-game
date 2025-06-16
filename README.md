@@ -1,4 +1,6 @@
-##My number guessing game
+# My number guessing game
+
+Link: https://roadmap.sh/projects/number-guessing-game
 
 Requirements
 It is a CLI-based game, so you need to use the command line to interact with the game. The game should work as follows:
@@ -20,5 +22,3 @@ To make the game more interesting, you can add the following features:
 (OK) Add a timer to see how long it takes the user to guess the number.
 
 (OK) Implement a hint system that provides clues to the user if they are stuck.
-
-Keep track of the user’s high score (i.e., the fewest number of attempts it took to guess the number under a specific difficulty level).

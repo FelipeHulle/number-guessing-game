@@ -15,7 +15,7 @@ class Difficulty:
         while choose not in chances:
         
             try:
-                choose = int(input('Choose your difficulty (Write the name):\n1. Easy (8 chances)\n2. Medium (6 chances)\n3. Hard (4 chances)\n4. Impossible (3 chances)\n\n'))
+                choose = int(input('Choose your difficulty (Write the number):\n1. Easy (8 chances)\n2. Medium (6 chances)\n3. Hard (4 chances)\n4. Impossible (3 chances)\n\n'))
             except:
                 print('\nChoose a valid number\n')
         
@@ -99,7 +99,7 @@ class Game:
         return print(
             f'\nYou lose, try again :('
             f'\nThe Magic Number was: {magic_number}'
-            f'\nYou spend {final_time - initial_time: .2f} seconds')
+            f'\nTime: {final_time - initial_time: .2f} seconds')
     
     def main(self):
 
